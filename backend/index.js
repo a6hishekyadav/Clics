@@ -41,3 +41,11 @@ app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
   connectDb();
 });
+
+const cors = require('cors');
+// Allow all origins
+app.use(cors());
+// Allow specific origin(s)
+app.use(cors({
+  origin: 'https://clics-frontend.vercel.app/'
+}));
