@@ -9,6 +9,7 @@ import { UserData } from "../context/UserContext";
 const Account = ({ user }) => {
   const navigate = useNavigate();
   const { setIsAuth, setUser } = UserData();
+  
   const logoutHandler = async () => {
     try {
       const { data } = await axios.get("/api/user/logout");
@@ -23,39 +24,44 @@ const Account = ({ user }) => {
 
   const { pins } = PinData();
 
-  let userPins;
+  let userPins = pins ? pins.filter((pin) => pin.owner === user._id) : [];
 
-  if (pins) {
-    userPins = pins.filter((pin) => pin.owner === user._id);
-  }
   return (
-    <div>
-      <div className="flex flex-col items-center justify-center">
-        <div className="p-6 w-full">
-          <div className="flex items-center justify-center">
-            <div className="w-24 h-24 rounded-full bg-gray-300 flex items-center justify-center">
-              <span className="text-3xl text-gray-700">
-                {user.name.slice(0, 1)}
-              </span>
-            </div>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-6">
+      <div className="max-w-4xl w-full bg-white rounded-lg shadow-lg p-6 mb-6">
+        <div className="flex items-center justify-center mb-4">
+          <div className="w-24 h-24 rounded-full bg-gray-300 flex items-center justify-center">
+            <span className="text-3xl text-gray-700 font-bold">
+              {user.name.slice(0, 1)}
+            </span>
           </div>
+        </div>
 
-          <h1 className="text-center text-2xl font-bold mt-4">{user.name}</h1>
-          <p className="text-center text-gray-600 mt-2">{user.email}</p>
-          <div className="flex justify-center mt-4 space-x-2">
-            <button
-              onClick={logoutHandler}
-              className="bg-gray-200 px-4 py-2 rounded"
-            >
-              Logout
-            </button>
-          </div>
+        <h1 className="text-center text-3xl font-bold text-gray-900 mb-2">
+          {user.name}
+        </h1>
+        <p className="text-center text-gray-600 mb-4">{user.email}</p>
 
-          <div className="mt-4 flex flex-wrap justify-center gap-4">
-            {userPins && userPins.length > 0 ? (
-              userPins.map((e) => <PinCard key={e._id} pin={e} />)
+        <div className="flex justify-center mb-4">
+          <button
+            onClick={logoutHandler}
+            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition duration-300"
+          >
+            Logout
+          </button>
+        </div>
+
+        <div className="mt-4">
+          <h2 className="text-xl font-semibold text-gray-800 mb-4">Your Pins</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            {userPins.length > 0 ? (
+              userPins.map((pin) => (
+                <PinCard key={pin._id} pin={pin} />
+              ))
             ) : (
-              <p>No Pin Yet</p>
+              <p className="col-span-full text-center text-gray-600">
+                No Pins Yet
+              </p>
             )}
           </div>
         </div>
