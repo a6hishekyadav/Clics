@@ -21,11 +21,7 @@ const Login = () => {
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
         <div className="flex justify-center mb-4">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Clics-logo.png/600px-Clics-logo.png"
-            alt="Clics"
-            className="h-12"
-          />
+         <img src="\triangle.png" alt="Clics" className="h-12 w-12"  />
         </div>
         <h2 className="text-2xl font-semibold text-center mb-6">
           Log in to see more

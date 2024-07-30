@@ -8,7 +8,7 @@ const Navbar = ({ user }) => {
         <div className="mx-auto px-4 py-2 flex justify-between items-center">
           <Link to="/" className="flex items-center mr-5">
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Clics-logo.png/600px-Clics-logo.png"
+              src="/triangle.png"
               alt=""
               className="h-6 md:mr-2"
             />

@@ -23,7 +23,7 @@ const Register = () => {
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
         <div className="flex justify-center mb-4">
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Clics-logo.png/600px-Clics-logo.png"
+            src="/triangle.png"
             alt="Clics"
             className="h-12"
           />
