@@ -1,19 +1,22 @@
-import { defineConfig, loadEnv } from "vite";
-import react from "@vitejs/plugin-react";
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import dotenv from 'dotenv';
+import path from 'path';
 
-export default defineConfig(({ mode }) => {
-  const env = loadEnv(mode, process.cwd(), '');
+// Load environment variables from the .env file in the parent directory
+dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
-  return {
-    plugins: [react()],
-    server: {
-      proxy: {
-        "/api": {
-          target: env.VITE_API_BASE_URL || "https://clics-backend.vercel.app/",
-          changeOrigin: true,
-          secure: false, // If using HTTPS
-        },
+console.log('VITE_API_BASE_URL:', process.env.VITE_API_BASE_URL);
+
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    proxy: {
+      '/api': {
+        target: process.env.VITE_API_BASE_URL,
+        changeOrigin: true,
+        secure: false,
       },
     },
-  };
+  },
 });
