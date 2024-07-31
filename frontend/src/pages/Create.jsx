@@ -47,7 +47,7 @@ const Create = () => {
       await addPin(formData, setFilePrev, setFile, setTitle, setPin, navigate);
       navigate("/");  // Navigate to the desired route after successful submission
     } catch (err) {
-      setError("Failed to add pin. Please try again.");
+      setError("Failed to add your clic. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -121,7 +121,7 @@ const Create = () => {
                 htmlFor="pin"
                 className="block text-sm font-medium text-gray-700"
               >
-                Pin
+                Description
               </label>
               <input
                 type="text"
