@@ -52,7 +52,7 @@ const Account = ({ user }) => {
         </div>
 
         <div className="mt-4">
-          <h2 className="text-xl font-semibold text-gray-800 mb-4">Your Pins</h2>
+          <h2 className="text-xl font-semibold text-gray-800 mb-4">Your Clics</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             {userPins.length > 0 ? (
               userPins.map((pin) => (
@@ -60,7 +60,7 @@ const Account = ({ user }) => {
               ))
             ) : (
               <p className="col-span-full text-center text-gray-600">
-                No Pins Yet
+                No Clics Yet. Let create some😉
               </p>
             )}
           </div>
